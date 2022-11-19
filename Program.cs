@@ -28,6 +28,7 @@ namespace AppiumTest
             new CommonActions()
                 .ClickButton(Button.home)
                 .ClickButton("PUG DOGS IMAGES");
+
         }
     }
 }
