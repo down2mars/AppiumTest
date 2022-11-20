@@ -13,7 +13,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AppiumTest.UIActions
 {
-    public class CommonActions
+    public class CommonActions : AppiumService
     {
         //private WindowsElement GetButton(string buttonName)
         //{
@@ -26,9 +26,19 @@ namespace AppiumTest.UIActions
         //}
 
 
+        public WindowsElement GetButton(string buttonName)
+        {
+            Assert.IsNotNull(buttonName, "Cannot click button because buttonName is Null");
+
+            WindowsElement button = session.FindElementByAccessibilityId(buttonName);
+            Assert.IsTrue(button.Enabled.Equals(true), "cannot click the button " + buttonName + " because it is not enabled");
+
+            return button;
+        }
+
         public CommonActions ClickButton(string buttonName)
         {
-            WindowsElement button = Button.GetButton(buttonName);
+            WindowsElement button = GetButton(buttonName);
 
             button.Click();
 

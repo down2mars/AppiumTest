@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Service;
 using OpenQA.Selenium.Appium.Windows;
@@ -21,13 +22,12 @@ namespace AppiumTest
         static void Main(string[] args)
         {
             new AppiumService()
-                .StopAppium()
-                .LaunchApp(@"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe");
-            new Navigation()
-                .OpenUrl(@"https://pugsfanclub.com/");
+                .LaunchApp(@"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe")
+                .session.Navigate().GoToUrl(@"https://pugsfanclub.com/");
             new CommonActions()
-                .ClickButton(Button.home)
-                .ClickButton("PUG DOGS IMAGES");
+                .ClickButton("PUG DOGS IMAGES")
+                .ClickButton(Button.home);
+                
 
         }
     }
