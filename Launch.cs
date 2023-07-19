@@ -16,7 +16,7 @@ namespace AppiumTest
 {
     public class AppiumService
     {
-        public WindowsDriver<WindowsElement> session;
+        public static WindowsDriver<WindowsElement> session;
         private readonly AppiumLocalService appiumLocalService = new AppiumServiceBuilder().UsingPort(4723).Build();
 
         public AppiumService StartAppium()
@@ -41,19 +41,20 @@ namespace AppiumTest
             return this;
         }
 
-        public AppiumService LaunchApp(  string path)
+        public AppiumService LaunchApp(string path)
         {
             StartAppium();
             AppiumOptions capabilities = new AppiumOptions();            
-            capabilities.AddAdditionalCapability("app", path);
+            capabilities.AddAdditionalCapability("app", path);            
             
-            WindowsDriver<WindowsElement> _session = new WindowsDriver<WindowsElement>(appiumLocalService, capabilities);
+            WindowsDriver<WindowsElement> _session = new WindowsDriver<WindowsElement>(appiumLocalService, capabilities);           
             
+
             session = _session;
             
             return this;
         }
-                
+        
     }   
     
 }

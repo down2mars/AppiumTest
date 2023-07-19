@@ -22,10 +22,11 @@ namespace AppiumTest
         static void Main(string[] args)
         {
             new AppiumService()
-                .LaunchApp(@"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe");
-                //.session.Navigate().GoToUrl(@"https://pugsfanclub.com/");
+                .LaunchApp(@"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe");                
             new CommonActions()
                 .ClickButton(Button.home);
+            AppiumService.session.Navigate().GoToUrl("https://www.msn.com/");
+            
 
         }
     }

@@ -28,6 +28,7 @@ namespace AppiumTest.UIActions
 
         public WindowsElement GetButton(string buttonName)
         {
+                       
             Assert.IsNotNull(buttonName, "Cannot click button because buttonName is Null");
 
             WindowsElement button = session.FindElementByAccessibilityId(buttonName);
